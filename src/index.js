@@ -15,8 +15,13 @@ refs.selector.addEventListener("change", () => {
             refs.imgBox.innerHTML = createImgMarkup(arr)
             refs.loader.style.display = "none";
         })
-        .catch((err) => console.log(err));
+         .catch((err) => {
+        console.log(err)
+        refs.loader.style.display = "none";
+        refs.error.style.display = "block";
+    });
 })
+
 
 
 function createSelectorMarkup(arr) {
@@ -27,7 +32,7 @@ function createSelectorMarkup(arr) {
 
 function createImgMarkup(arr) {
     return arr.map(({ url, breeds }) => `
-    <img src="${url}" alt="${breeds[0].name}" width="500px" />
+    <img src="${url}" alt="${breeds[0].name}" width="300px"/>
     <div>
     <h2>${breeds[0].name}</h2>
     <p>${breeds[0].description}</p>
@@ -42,6 +47,7 @@ fetchBreeds()
     .then(data => {
         refs.selector.insertAdjacentHTML("beforeend", createSelectorMarkup(data));
         refs.loader.style.display = "none";
+        refs.selector.style.display = "block";
     })
     .catch((err) => {
         console.log(err)

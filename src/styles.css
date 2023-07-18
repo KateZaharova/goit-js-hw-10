@@ -3,10 +3,14 @@ box-sizing: border-box;
 width: 100%;
 }
 
-
 .error{
 display: none;
 }
+
+.breed-select{
+display: none;
+}
+
 
 .cat-info{
     display: flex;
